@@ -1,5 +1,5 @@
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
-from langchain_core.messages import HumanMessage, AIMessage
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from transformers import AutoTokenizer, pipeline
 
 model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
@@ -20,7 +20,9 @@ llm = HuggingFacePipeline(pipeline=pipe)
 model = ChatHuggingFace(llm=llm)
 
 # Use a list of Message objects for history
-chat_history = [] 
+chat_history = [
+    SystemMessage(content="you are an AI assistant so act like a real human assistan and talk to the user using HumanMessage your name is 'stew' do not hallucinate generate answer according to HumanMessage be concise")
+] 
 
 print("Chatbot is ready! type 'exit' to quit.")
 
@@ -30,12 +32,12 @@ while True:
         break
     
     # 1. Add user message to history
-    chat_history.append(HumanMessage(content=user_input))
+    chat_history.append(HumanMessage(content=user_input)) # type: ignore
 
     # 2. Pass the ENTIRE history so it has context
     result = model.invoke(chat_history)
     
     # 3. Add AI response to history
-    chat_history.append(AIMessage(content=result.content))
+    chat_history.append(AIMessage(content=result.content)) # type: ignore
     
     print('AI:', result.content.strip()) # type: ignore
