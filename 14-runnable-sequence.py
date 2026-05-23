@@ -12,9 +12,13 @@ promt = PromptTemplate(
     template='write a joke about {topic}',
     input_variables=['topic']
 )
+promt2 = PromptTemplate(
+    template='explain the following joke \n {joke}',
+    input_variables=['joke']
+)
 
 parser= StrOutputParser()
 
-chain = RunnableSequence(promt, model, parser)
+chain = RunnableSequence(promt, model, parser,promt2, model, parser)
 
 print(chain.invoke({'topic':'AI'}))
