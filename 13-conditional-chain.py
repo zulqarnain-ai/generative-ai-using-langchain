@@ -35,8 +35,8 @@ prompt3 =PromptTemplate(
 chain1 = prompt1 | model | pyparser
 
 chain2 = RunnableBranch(
-    (lambda x:x.sentiment =='positive', prompt2 | model | strparser),
-    (lambda x:x.sentiment =='negative', prompt3 | model | strparser),
+    (lambda x:x.sentiment =='positive', prompt2 | model | strparser), # type: ignore
+    (lambda x:x.sentiment =='negative', prompt3 | model | strparser), # type: ignore
     RunnableLambda(lambda x:'sentiment not fount')
 )
 
