@@ -26,3 +26,5 @@ numpy
 scikit-learn
 
 grandalf
+
+langchain_community
