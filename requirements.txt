@@ -28,3 +28,12 @@ scikit-learn
 grandalf
 
 langchain_community
+
+chromadb
+
+faiss-cpu
+
+tiktoken
+
+wikipedia
+
