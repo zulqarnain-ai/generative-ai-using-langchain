@@ -27,7 +27,7 @@ scikit-learn
 
 grandalf
 
-langchain_community
+langchain-community
 
 chromadb
 
@@ -37,3 +37,10 @@ tiktoken
 
 wikipedia
 
+pydantic
+
+duckduckgo-search
+
+langchain_experimental
+
+ddgs
